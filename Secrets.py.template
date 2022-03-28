@@ -1,0 +1,3 @@
+USER_NAME = ""
+USER_PASSWORD = ""
+USER_ID_NUMBER =""
