@@ -23,7 +23,15 @@ class Scraper:
     def get_latest_grades(self) -> pd.DataFrame:
         """Returns latest grades as a dataframe"""
         table = pd.read_html(self.sheilta_page_source)[LATEST_GRADES_TABLE_LOCATION]
-        return table
+        res = preprocess_latest_grades_table(table)
+        print(res)
+        return preprocess_latest_grades_table(table)
+
+
+def print_first_col(df: pd.DataFrame):
+    """Prints the first column of a dataframe"""
+    print(df.iloc[:, 0])
 
 leon = Scraper()
-leon.get_latest_grades().to_excel('leon_latest_grades.xlsx')
+leon.get_latest_grades()
+print(leon.get_user_course_info())

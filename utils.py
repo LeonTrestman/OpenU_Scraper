@@ -27,9 +27,17 @@ def user_course_info(grade_table: pd.DataFrame) -> pd.DataFrame:
                        inplace=True)
     return grade_table
 
+#TODO:fix index of the table
 def preprocess_latest_grades_table(latest_grades_table: pd.DataFrame) -> pd.DataFrame:
     """
     Preprocesses the latest grades table.
     removes unnecessary columns and fixes encoding issues.
     """
-    return latest_grades_table[:]
+    #remove unnecessary row
+    latest_grades_table = latest_grades_table.iloc[1:]
+    #set headers
+    latest_grades_table.columns = latest_grades_table.iloc[0]
+    latest_grades_table = latest_grades_table.iloc[1:]
+    # latest_grades_table.reset_index(inplace=True, drop=True)
+
+    return latest_grades_table
