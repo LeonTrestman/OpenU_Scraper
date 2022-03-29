@@ -9,11 +9,12 @@ from Secrets import USER_NAME, USER_PASSWORD, USER_ID_NUMBER
 from URLs import Sheilta_URL
 
 
-class Sheilta_Webdriver:
+class Sheilta_Webdriver():
     """ Class for the Sheilta Webdriver """
 
     def __init__(self):
         self.driver = self.start_webdriver()
+        self.sheilta_page_source = self.driver.page_source
         self.login()
         self.login_cookies = self.get_login_cookies()
 
@@ -23,7 +24,6 @@ class Sheilta_Webdriver:
         options.headless = False
         driver = webdriver.Chrome(options=options, service=Service(ChromeDriverManager().install()))
         driver.get(Sheilta_URL)
-
         return driver
 
     def login(self) -> None:
