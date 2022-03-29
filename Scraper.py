@@ -26,14 +26,3 @@ class Scraper:
         return preprocess_latest_grades_table(table)
 
 
-    def test(self):
-        response = self.session.get('https://sheilta.apps.openu.ac.il/pls/dmyopt2/myop.myop_screen')
-        print(response.text)
-
-leon = Scraper()
-table : pd.DataFrame = leon.get_latest_grades()
-table2 = leon.get_user_course_info()
-print(table2.columns)
-table.name = 'Leon'
-print(table.columns)
-print(table)
