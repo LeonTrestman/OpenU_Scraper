@@ -9,3 +9,5 @@ utils.py
 .idea
 Secrets.py
 testfile.py
+*.csv
+*.xlsx
