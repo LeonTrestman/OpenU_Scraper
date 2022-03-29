@@ -2,7 +2,7 @@
 import pandas as pd
 from Sheilta_Webdriver import Sheilta_Webdriver
 from Table_Locations import *
-from URLs import User_Course_Info_URL
+from URLs import User_Course_Info_URL, Sheilta_main_page_URL
 from Preprocessors import preprocess_latest_grades_table, preprocess_user_course_info
 
 
@@ -16,12 +16,12 @@ class Scraper:
         """Returns user course info as a dataframe"""
         response = self.session.get(User_Course_Info_URL)
         user_course_info_table = pd.read_html(response.content)[USER_COURSE_INFO_TABLE_LOCATION]
-        res = preprocess_user_course_info(user_course_info_table)
-        return res
+        return preprocess_user_course_info(user_course_info_table)
+
 
     def get_latest_grades(self) -> pd.DataFrame:
         """Returns latest grades as a dataframe"""
-        response = self.session.get('https://sheilta.apps.openu.ac.il/pls/dmyopt2/myop.myop_screen')
+        response = self.session.get(Sheilta_main_page_URL)
         table = pd.read_html(response.content)[LATEST_GRADES_TABLE_LOCATION]
         return preprocess_latest_grades_table(table)
 
