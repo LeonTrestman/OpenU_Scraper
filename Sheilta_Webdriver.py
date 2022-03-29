@@ -1,3 +1,4 @@
+import requests
 from selenium.webdriver.support import expected_conditions as EC
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -14,7 +15,7 @@ class Sheilta_Webdriver:
     def __init__(self):
         self.driver = self.start_webdriver()
         self.login()
-        self.login_cookies = self.driver.get_cookies()
+        self.login_cookies = self.get_login_cookies()
 
     def start_webdriver(self) -> webdriver:
         """ Returns webdriver"""
@@ -52,3 +53,9 @@ class Sheilta_Webdriver:
         for cookie in cookies:
             log_in_cookies[cookie['name']] = cookie['value']
         return log_in_cookies
+
+    def get_logged_in_session(self) -> requests.Session:
+        """Returns a logged in to sheilta session"""
+        session = requests.Session()
+        session.cookies.update(self.login_cookies)
+        return session
