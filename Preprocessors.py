@@ -1,11 +1,7 @@
 """Contains all preprocess functions for Scraper"""
-import pandas as pd
+from pandas import DataFrame
 
-def get_list_from_table_row(scraped_row) -> list:
-    """ Returns the scraped row as a list """
-    return scraped_row.get_text(separator=',', strip=True).split(',')
-
-def preprocess_user_course_info(grade_table: pd.DataFrame) -> pd.DataFrame:
+def preprocess_user_course_info(grade_table: DataFrame) -> DataFrame:
     """
     Preprocesses the grade table.
     removes unnecessary columns and fixes encoding issues.
@@ -21,14 +17,14 @@ def preprocess_user_course_info(grade_table: pd.DataFrame) -> pd.DataFrame:
     return procceeded_grade_table
 
 
-def preprocess_latest_grades_table(latest_grades_table: pd.DataFrame) -> pd.DataFrame:
+def preprocess_latest_grades_table(latest_grades_table: DataFrame) -> DataFrame:
     """
     Preprocesses the latest grades table.
     removes unnecessary columns and fixes encoding issues.
     """
     # drop unnecessary columns
     proccessed_lgs = latest_grades_table.drop(latest_grades_table.columns[-1], axis=1)
-    # revrese the order of the columns
+    # reverses the order of the columns
     proccessed_lgs = proccessed_lgs.iloc[:, ::-1]
     # set headers
     proccessed_lgs.columns = proccessed_lgs.iloc[1]
