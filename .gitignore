@@ -5,7 +5,6 @@ OpenUniScraperv1.py
 Paths.py
 system.py
 tester.py
-utils.py
 .idea
 Secrets.py
 testfile.py
