@@ -10,3 +10,4 @@ Secrets.py
 testfile.py
 *.csv
 *.xlsx
+.testers
