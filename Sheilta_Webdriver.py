@@ -1,3 +1,11 @@
+"""
+Class for a selenium webdriver of sheilta
+This class is'nt used in the main program,
+but might be useful for addition functionality
+with interacting with js
+use with caution as it add a lot of overhead
+"""
+
 import requests
 from selenium.webdriver.support import expected_conditions as EC
 from selenium import webdriver
@@ -6,7 +14,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
 from Secrets import USER_NAME, USER_PASSWORD, USER_ID_NUMBER
-from URLs import Sheilta_URL
+from URLs import SHEILTA_URL
 
 
 class Sheilta_Webdriver():
@@ -23,7 +31,7 @@ class Sheilta_Webdriver():
         options = webdriver.ChromeOptions()
         options.headless = True
         driver = webdriver.Chrome(options=options, service=Service(ChromeDriverManager().install()))
-        driver.get(Sheilta_URL)
+        driver.get(SHEILTA_URL)
         return driver
 
     def login(self) -> None:
