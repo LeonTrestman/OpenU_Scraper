@@ -21,7 +21,7 @@ class Sheilta_Webdriver():
     def start_webdriver(self) -> webdriver:
         """ Returns webdriver"""
         options = webdriver.ChromeOptions()
-        options.headless = False
+        options.headless = True
         driver = webdriver.Chrome(options=options, service=Service(ChromeDriverManager().install()))
         driver.get(Sheilta_URL)
         return driver
