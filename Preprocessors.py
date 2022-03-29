@@ -33,6 +33,8 @@ def preprocess_latest_grades_table(latest_grades_table: pd.DataFrame) -> pd.Data
     # set headers
     proccessed_lgs.columns = proccessed_lgs.iloc[1]
     proccessed_lgs = proccessed_lgs.iloc[2:]
+    #remove headers (serise) name
+    proccessed_lgs = proccessed_lgs.rename_axis(None,index=0 , axis=1)
     # reset index
     proccessed_lgs = proccessed_lgs.reset_index(drop=True)
 
