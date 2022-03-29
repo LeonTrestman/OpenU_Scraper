@@ -1,10 +1,9 @@
-import time
 
 import pandas as pd
 from Sheilta_Webdriver import Sheilta_Webdriver
 from Table_Locations import *
-from URLs import User_Course_Info_URL, Sheilta_URL
-from utils import user_course_info, preprocess_latest_grades_table
+from URLs import User_Course_Info_URL
+from Preprocessors import preprocess_latest_grades_table, preprocess_user_course_info
 
 
 class Scraper:
@@ -18,20 +17,15 @@ class Scraper:
         """Returns user course info as a dataframe"""
         response = self.session.get(User_Course_Info_URL)
         user_course_info_table = pd.read_html(response.content)[USER_COURSE_INFO_TABLE_LOCATION]
-        return user_course_info(user_course_info_table)
+        res = preprocess_user_course_info(user_course_info_table)
+        print(res.columns)
+        print(res)
+        res.to_excel('user_course_info.xlsx')
+        return res
 
     def get_latest_grades(self) -> pd.DataFrame:
         """Returns latest grades as a dataframe"""
         table = pd.read_html(self.sheilta_page_source)[LATEST_GRADES_TABLE_LOCATION]
-        res = preprocess_latest_grades_table(table)
-        print(res)
         return preprocess_latest_grades_table(table)
 
 
-def print_first_col(df: pd.DataFrame):
-    """Prints the first column of a dataframe"""
-    print(df.iloc[:, 0])
-
-leon = Scraper()
-leon.get_latest_grades()
-print(leon.get_user_course_info())

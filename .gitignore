@@ -1,13 +1,6 @@
 .venv
-cookieTester.py
-loginTEst.py
-OpenUniScraperv1.py
-Paths.py
-system.py
-tester.py
 .idea
-Secrets.py
-testfile.py
 *.csv
 *.xlsx
 /testers
+Secrets.py
