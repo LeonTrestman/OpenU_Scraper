@@ -13,7 +13,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
-from Secrets import USER_NAME, USER_PASSWORD, USER_ID_NUMBER
+from scrapers.secrets.Secret_OpenU import USER_NAME, USER_PASSWORD, USER_ID_NUMBER
 from URLs import SHEILTA_URL
 
 

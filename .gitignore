@@ -5,3 +5,4 @@
 /scrapers/secrets/Secret_*.py
 /testers
 scrapers/secrets/Secret_OpenU.py
+/debug.log

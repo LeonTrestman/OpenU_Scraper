@@ -4,10 +4,11 @@ from requests import Session
 
 class Scraper(ABC):
 
-    def __init__(self):
+    def __init__(self,data_choises: list):
         self.session = Session()
-        self.login()
+        self._login()
         self._validate_login()
+        self.data_choices = data_choises
 
 
     @abstractmethod
@@ -15,7 +16,7 @@ class Scraper(ABC):
         ...
 
     @abstractmethod
-    def login(self):
+    def _login(self):
         """implement logged in with session"""
         ...
 
