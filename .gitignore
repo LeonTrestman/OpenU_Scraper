@@ -2,6 +2,6 @@
 .idea
 *.csv
 *.xlsx
-/secrets/secret_*.py
+/scrapers/secrets/Secret_*.py
 /testers
-Secrets.py
+scrapers/secrets/Secret_OpenU.py
